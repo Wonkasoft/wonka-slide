@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * Fired during plugin deactivation
+ *
+ * @link       https://wonkasoft.com
+ * @since      1.0.0
+ *
+ * @package    Wonka_Slide
+ * @subpackage Wonka_Slide/includes
+ */
+
 /**
  * Fired during plugin deactivation.
  *
@@ -6,8 +17,8 @@
  *
  * @since      1.0.0
  * @package    Wonka_Slide
- * @subpackage wonka-slide/inc
- * @author     Wonkasoft <info@wonkasoft.com>
+ * @subpackage Wonka_Slide/includes
+ * @author     Wonkasoft <support@wonkasoft.com>
  */
 class Wonka_Slide_Deactivator {
 
@@ -19,7 +30,7 @@ class Wonka_Slide_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-    
-  }
-  
+
+	}
+
 }
