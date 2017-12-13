@@ -19,3 +19,15 @@
  *
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+register_activation_hook( __FILE__, 'wonka_slide_activator' );
+function wonka_slide_activator() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wonka-slide-activator.php';
+	wonka_slide_activator::activate();
+}
+
+register_deactivation_hook( __FILE__, 'wonka_slide_deactivator' );
+function wonka_slide_deactivator() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wonka-slide-deactivator.php';
+	wonka_slide_deactivator::deactivate();
+}
