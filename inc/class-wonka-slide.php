@@ -1,18 +1,5 @@
 <?php
 /**
- * The file that defines the core plugin class
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       https://wonkasoft.com
- * @since      1.0.0
- *
- * @package    Wonka_Slide
- * @subpackage wonka-slide/inc
- */
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-/**
  * The core plugin class.
  *
  * This is used to define internationalization, admin-specific hooks, and
@@ -26,6 +13,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
  * @subpackage wonka-slide/inc
  * @author     Wonkasoft <info@wonkasoft.com>
  */
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 class Wonka_Slide {
 
 	/**
@@ -106,14 +94,9 @@ class Wonka_Slide {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'inc/class-wonka-slide-i18n.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the admin area.
+		 * The class responsible for building slider and setting shortcodes.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wonka-slide-admin.php';
-
-		/**
-		 * The page responsible for handling settings data.
-		 */
-    		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wonka-slide-settings-ajax.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'inc/class-wonka-slide-build.php';
 
 
 		$this->loader = new Wonka_Slide_Loader();
