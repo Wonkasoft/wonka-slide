@@ -130,11 +130,6 @@ class Wonka_Slide {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Wonka_Slide_Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'Wonka_Slide_display_admin_page' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'Wonka_Slide_add_action_links' );
-		$this->loader->add_action( 'init', $plugin_admin, 'Wonka_Slide_start_session' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 	}
 
