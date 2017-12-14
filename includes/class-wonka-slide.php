@@ -122,6 +122,11 @@ class Wonka_Slide {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wonka-slide-public.php';
 
+		/**
+		 * The class responsible for building slider and setting shortcodes.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wonka-slide-build.php';
+
 		$this->loader = new Wonka_Slide_Loader();
 
 	}
@@ -156,6 +161,8 @@ class Wonka_Slide {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wonka_slide_add_action_links' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wonka_slide_display_admin_page' );
 
 	}
 
