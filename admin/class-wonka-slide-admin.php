@@ -102,13 +102,14 @@ class Wonka_Slide_Admin {
 
 	// Active the Admin / Settings page
 	public function wonka_slide_display_admin_page() {
+		$icon_url = (string)plugins_url( "/img/ws-slide-logo.svg", __FILE__ );
 		add_menu_page(
 			'Wonka Slide',
 			'Wonka Slide',
 			'manage_options',
 			'wonka-slide-settings',
 			array( $this,'wonka_slide_show_settings_page' ),
-			'data:image/svg+xml;base64,'. plugin_dir_url( __FILE__ ) ."img/ws-slide-logo.svg",
+			'data:image/svg+xml;base64,'. $icon_url,
 			100
 			);
 	}

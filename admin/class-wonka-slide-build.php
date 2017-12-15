@@ -15,15 +15,20 @@ function wonka_slide_shortcode( $atts ) {
 
 	$output = '';
 	$atts = shortcode_atts( array(
-		'id' => '',
+		'slide_count' => '3',
 		'container_class' => 'wonka-slider-container',
-		'img_class' => 'wonka-slider-class',
+		'item_class' => 'wonka-slider-item',
+		'img_class' => 'wonka-slider-img',
 	), $atts);
 
+		$posts_array = get_posts();
+		foreach ( $posts_array as $current ) :
+
+			get_the_post_thumbnail( $current->ID );
+		endforeach;
 		ob_start();
-		
 		?>
-		<div>WORKING SLIDER</div>
+		<div class="<?php echo $atts['container_class']; ?>">WORKING SLIDER BEAST</div>
 
 		<?php
 		$output .= ob_get_clean();

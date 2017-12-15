@@ -25,11 +25,6 @@
  * Domain Path:       /languages
  */
 
-<<<<<<< HEAD
-// For setting up plugin at activation
-register_activation_hook( __FILE__, 'wonka_slide_activator' );
-function wonka_slide_activator() {
-=======
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -47,20 +42,11 @@ define( 'PLUGIN_NAME_VERSION', '1.0.0' );
  * This action is documented in includes/class-wonka-slide-activator.php
  */
 function activate_wonka_slide() {
->>>>>>> master
+
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wonka-slide-activator.php';
 	Wonka_Slide_Activator::activate();
 }
 
-<<<<<<< HEAD
-// For deleting all information
-register_deactivation_hook( __FILE__, 'wonka_slide_deactivator' );
-function wonka_slide_deactivator() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wonka-slide-deactivator.php';
-	wonka_slide_deactivator::deactivate();
-}
-
-=======
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-wonka-slide-deactivator.php
@@ -73,16 +59,12 @@ function deactivate_wonka_slide() {
 register_activation_hook( __FILE__, 'activate_wonka_slide' );
 register_deactivation_hook( __FILE__, 'deactivate_wonka_slide' );
 
->>>>>>> master
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-<<<<<<< HEAD
-require plugin_dir_path( __FILE__ ) . 'inc/class-wonka-slide.php';
-=======
+
 require plugin_dir_path( __FILE__ ) . 'includes/class-wonka-slide.php';
->>>>>>> master
 
 /**
  * Begins execution of the plugin.
@@ -99,9 +81,5 @@ function run_wonka_slide() {
 	$plugin->run();
 
 }
-<<<<<<< HEAD
 
 run_wonka_slide();
-=======
-run_wonka_slide();
->>>>>>> master
