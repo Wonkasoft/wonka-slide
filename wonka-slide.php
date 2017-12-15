@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Wonka Slide
  * Plugin URI:        https://wonkasoft.com/wonka-slide
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Wonka Slide is a plugin that was built to run a lean Slider that is made up of the Posts featured images.
  * Version:           1.0.0
  * Author:            Wonkasoft
  * Author URI:        https://wonkasoft.com

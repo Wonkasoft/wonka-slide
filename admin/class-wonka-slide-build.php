@@ -22,13 +22,20 @@ function wonka_slide_shortcode( $atts ) {
 	), $atts);
 
 		$posts_array = get_posts();
-		foreach ( $posts_array as $current ) :
-
-			get_the_post_thumbnail( $current->ID );
-		endforeach;
+		
 		ob_start();
 		?>
-		<div class="<?php echo $atts['container_class']; ?>">WORKING SLIDER BEAST</div>
+		<div class="<?php echo $atts['container_class']; ?>">
+			<div class="list-wrap">
+				<ul class="slide-list">
+					<?php	foreach ( $posts_array as $current ) : ?>
+						<li class="slide-item">
+							<?php echo get_the_post_thumbnail( $current->ID ); ?>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
 
 		<?php
 		$output .= ob_get_clean();
