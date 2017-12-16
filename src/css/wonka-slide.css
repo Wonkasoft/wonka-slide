@@ -1,0 +1,15 @@
+/**
+ *  SASS FILE
+ */
+div#wonka-slider-1 {
+  position: relative;
+  width: 100%;
+  overflow: hidden; }
+  div#wonka-slider-1 ul.wonka-slide-list {
+    position: relative;
+    list-style: none; }
+    div#wonka-slider-1 ul.wonka-slide-list li.wonka-slider-item {
+      position: relative;
+      display: inline-block; }
+
+/*# sourceMappingURL=wonka-slide.css.map */

@@ -1,0 +1,160 @@
+/**
+ *  SASS FILE
+ */
+/* MIXINS */
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+ 
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+/* TRANSITIONS */
+$transition-15: all .15s ease-in-out;
+
+/* SLIDER ELEMENTS */
+div#wonka-slider-1 {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	@include prefix( transition, $transition-15, webkit moz o );
+	/* SLIDER REFERENCE LIST */
+	div.wonka-slide-ref-wrap {
+		position: absolute;
+		text-align: center;
+		display: block;
+		height: 35px;
+		width: 100%;
+		bottom: 5px;
+		z-index: 500;
+		ul.wonka-slide-ref-list {
+			position: relative;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			height: 100%;
+			li.wonka-slide-ref-item {
+				position: relative;
+				display: inline-block;
+				width: 35px;
+				height: 100%;
+				text-align: center;
+				vertical-align: middle;
+				@include prefix( transition, $transition-15, webkit moz o );
+				div.background-img{
+					position: relative;
+					top: 50%;
+					width: 15px;
+					height: 15px;
+					margin: auto;
+					border-radius: 50%;
+					overflow: hidden;
+					border: 2px solid #fff;
+					@include prefix( transform, translateY(-50%), webkit moz o );
+					@include prefix( transition, $transition-15, webkit moz o );
+				}
+				&.active-ref {
+					div.background-img{
+						width: 35px;
+						height: 35px;
+						border: 2px solid #1dcffc;
+					}
+				}
+				&:hover {
+					div.background-img{
+						width: 35px;
+						height: 35px;
+					}
+				}
+			}
+		}
+	}
+	/* START SLIDE LIST */
+	ul.wonka-slide-list {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+		@include prefix( transition, $transition-15, webkit moz o );
+    li.wonka-slider-item {
+    	position: relative;
+    	display: none;
+    	float: left;
+			@include prefix( transition, $transition-15, webkit moz o );
+	    &.active {
+	    	display: inline-block;
+	    }
+	    &.left-slide-in {
+	    	display: inline-block;
+	    	right: 105%;
+				@include prefix( transition, $transition-15, webkit moz o );
+	    }
+	    &.right-slide-in {
+	    	display: inline-block;
+	    	left: 105%;
+				@include prefix( transition, $transition-15, webkit moz o );
+	    }
+	    &.left-slide-out {
+	    	display: inline-block;
+	    	right: 0;
+				@include prefix( transition, $transition-15, webkit moz o );
+	    }
+	    &.right-slide-out {
+	    	display: inline-block;
+	    	left: 0;
+				@include prefix( transition, $transition-15, webkit moz o );
+	    }
+    }
+	}
+	a.slide-control {
+		position: absolute;
+		display: inline-block;
+		width: 40px;
+		height: 100%;
+		top: 50%;
+		font-size: 38px;
+		border: none;
+		background: #000;
+		@include prefix( transition, $transition-15, webkit moz o );
+		@include prefix( transform, translateY(-50%), webkit moz o );
+		&.slide-control-left {
+			left: 0;
+			background: -webkit-linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.5) 100%);
+			background: -moz-linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.5) 100%);
+			background: linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.5) 100%);
+			&:after {
+				content: "\276E";
+				position: absolute;
+				display: inline-block;
+				top: 50%;
+				left: 50%;
+				@include prefix( transform, translate(-50%, -50%), webkit moz o );
+			}
+		}
+		&.slide-control-right {
+			right: 0;
+			background: -webkit-linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.5) 100%);
+			background: -moz-linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.5) 100%);
+			background: linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.5) 100%);
+			&:after {
+				content: "\276F";
+				position: absolute;
+				display: inline-block;
+				top: 50%;
+				left: 50%;
+				@include prefix( transform, translate(-50%, -50%), webkit moz o );
+			}
+		}
+		&:after {
+			color: #fff;
+			@include prefix( transition, $transition-15, webkit moz o );
+		}
+		&:hover {
+			&:after {
+				color: #1dcffc;
+			}
+		}
+	}
+}
