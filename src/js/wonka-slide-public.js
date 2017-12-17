@@ -1,7 +1,8 @@
 ( function() {
 'use strict'
 
-var slider = document.getElementById('wonka-slider-main'),
+var slider,
+controls,
 slide_time,
 current_indicator,
 next_indicator,
@@ -10,8 +11,13 @@ el,
 next_el,
 first_el;
 
+	
 	window.onload = function () {
-	 slide_time = setInterval( slide_interval, 4000);
+		if (document.getElementById('wonka-slider-main')) {
+			slider = document.getElementById('wonka-slider-main');
+			slide_time = setInterval( slide_interval, 4000);
+			set_controls();
+		}
 	};
 	
 	function slide_interval() {
@@ -33,7 +39,6 @@ first_el;
 				break;
 			}
 		}
-
 	}
 
 	function wonka_queue(cur_el, x_el, cur_ind, x_ind, time) {
@@ -43,14 +48,18 @@ first_el;
 			cur_el.style.right = '0%';
 			setTimeout(function(){
 				cur_el.style.right = '105%'
-				cur_ind.classList.remove('active-ref');
+				if ( cur_ind != null ) {
+					cur_ind.classList.remove('active-ref');
+				}
 					setTimeout(function(){
 						cur_el.classList.remove('left-slide-out'); 
 						x_el.classList.add('right-slide-in'); 
 						x_el.style.left = '105%';
 						setTimeout(function(){
 							x_el.style.left = '0%'; 
-							x_ind.classList.add('active-ref');
+							if ( x_ind != null ) {
+								x_ind.classList.add('active-ref');
+							}
 							setTimeout(function(){
 								x_el.classList.remove('right-slide-in'); 
 								x_el.classList.add('active'); 
@@ -67,6 +76,10 @@ first_el;
 			}, time);
 		}, time);
 
+	}
+
+	function set_controls() {
+		
 	}
 
 

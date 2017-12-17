@@ -1,5 +1,5 @@
 /**
- *  SASS FILE
+ *  SASS FILE FOR PUBLIC CSS
  */
 /* MIXINS */
 @mixin prefix($property, $value, $prefixes: ()) {
@@ -118,6 +118,7 @@ div#wonka-slider-main {
 		font-size: 38px;
 		border: none;
 		background: #000;
+		opacity: 0.2;
 		@include prefix( transition, $transition-15, webkit moz o );
 		@include prefix( transform, translateY(-50%), webkit moz o );
 		&.slide-control-left {
@@ -153,6 +154,7 @@ div#wonka-slider-main {
 			@include prefix( transition, $transition-15, webkit moz o );
 		}
 		&:hover {
+			opacity: 1;
 			&:after {
 				color: #1dcffc;
 			}

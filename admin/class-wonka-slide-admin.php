@@ -106,14 +106,14 @@ class Wonka_Slide_Admin {
 			'Wonka Slide',
 			'Wonka Slide',
 			'manage_options',
-			'wonka-slide-settings',
+			'wonka-slide-admin-display',
 			array( $this,'wonka_slide_show_settings_page' ),
-			plugins_url( "/img/ws-slide-logo.svg", __FILE__ ),
+			'none',
 			100
 			);
 	}
 
-	// Create the action links on the plugins page
+	// To display the setting page for Wonka Slide
 	public function wonka_slide_show_settings_page() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonka-slide-admin-display.php';
 	}
@@ -122,6 +122,4 @@ class Wonka_Slide_Admin {
 	public function wonka_slide_add_action_links() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonka-slide-add-action-links.php';
 	}
-
-
 }
