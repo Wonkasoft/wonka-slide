@@ -122,6 +122,4 @@ class Wonka_Slide_Admin {
 	public function wonka_slide_add_action_links() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonka-slide-add-action-links.php';
 	}
-
-
 }
