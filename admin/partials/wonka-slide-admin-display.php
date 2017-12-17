@@ -22,15 +22,21 @@
 	</div> <!-- /page-header -->
 	<div class="content-area">
 		<p>Documentation for Wonka Slide</p>
-		<h1>Shortcode Information</h1>
-		<p>Default Shortcode</p>
+		<h2>Shortcode Information - How to use Wonka Slide</h2>
+		<strong><p>Default Shortcode</p></strong>
 		<code>[wonka-slider]</code>
 		<p>Default option has all options enabled</p>
-		<p>Slide Indicators Shortcode Option</p>
-		<code>[wonka-slider slide_indicators="False"]</code>
+		<strong><p>Slide Indicators Shortcode Option</p></strong>
+		<code>[wonka-slider slide_indicators="false"]</code>
 		<p>Slide indicators option is a bool (True/False) for silde indicators</p>
-		<p>Slider Count Shortcode Option</p>
+		<strong><p>Slide Arrows Shortcode Option</p></strong>
+		<code>[wonka-slider slide_arrows="false"]</code>
+		<p>Slide arrows option is a bool (True/False) for silde arrows</p>
+		<strong><p>Slider Count Shortcode Option</p></strong>
 		<code>[wonka-slider slide_count="5"]</code>
 		<p>Slider count option sets the slider count (1-10) slides</p>
+		<h3>Description</h3>
+		<h4>Wonka Slide was build to add a slider using your latest blog post featured images. You can add a slider anywhere that you uses shortcode on your site such as widgets, post, pages etc.</h4>
+		<p>If you have any questions, comments, or suggestions please send all inquiries to <a href="mail:support@wonkasoft.com">support@wonkasoft.com</a>. If you would like to <a href="https://paypal.me/Wonkasoft" target="_blank">donate</a> to support us please use this <a href="https://paypal.me/Wonkasoft" target="_blank">link</a></p>
 	</div> <!-- /content-area -->
 </div> <!-- /page-wrapper -->
