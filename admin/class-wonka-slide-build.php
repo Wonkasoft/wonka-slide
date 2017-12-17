@@ -17,6 +17,7 @@ function wonka_slide_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'id' => 'wonka-slider-main',
 		'slide_indicators' => true,
+		'slide_arrows' => true,
 		'indicators_wrap_class' => 'wonka-slide-indicators-wrap',
 		'indicators_list_class' => 'wonka-slide-indicators-list',
 		'indicators_item_class' => 'wonka-slide-indicators-item',
@@ -27,6 +28,8 @@ function wonka_slide_shortcode( $atts ) {
 		'img_class' => 'wonka-slide-img',
 	), $atts);
 
+	strtolower( $atts['slide_arrows'] );
+	$atts['slide_arrows'] = ( $atts['slide_arrows'] === 'false' ) ? false: true;
 	strtolower( $atts['slide_indicators'] );
 	$atts['slide_indicators'] = ( $atts['slide_indicators'] === 'false' ) ? false: true; 
 	$img_args = array(
@@ -65,8 +68,10 @@ function wonka_slide_shortcode( $atts ) {
 		} 
 		endforeach;
 		$output .= '</ul></div>';
-		$output .= '<a role="button" data-direction="prev" class="slide-control slide-control-left"></a>';
-		$output .= '<a role="button" data-direction="next" class="slide-control slide-control-right"></a>';
+		if ( (bool)$atts['slide_arrows'] ) :
+			$output .= '<a role="button" data-direction="prev" class="slide-control slide-control-left"></a>';
+			$output .= '<a role="button" data-direction="next" class="slide-control slide-control-right"></a>';
+		endif;
 		$output .= '</div>';
 		ob_start();
 
