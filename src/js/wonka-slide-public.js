@@ -119,11 +119,9 @@ last_el;
 	function set_controls() {
 		controls = document.getElementsByClassName('slide-control');
 		controls[0].addEventListener( 'click', function() {
-			console.log( this.getAttribute('data-direction') );
 			slide_interval( this.getAttribute('data-direction') );
 		});
 		controls[1].addEventListener( 'click', function() {
-			console.log( this.getAttribute('data-direction') );
 			slide_interval( this.getAttribute('data-direction') );
 		});
 	}
