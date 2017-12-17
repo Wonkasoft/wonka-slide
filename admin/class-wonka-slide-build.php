@@ -15,7 +15,7 @@ function wonka_slide_shortcode( $atts ) {
 
 	$output = '';
 	$atts = shortcode_atts( array(
-		'id' => 'wonka-slider-1',
+		'id' => 'wonka-slider-main',
 		'slide_ref' => true,
 		'ref_wrap_class' => 'wonka-slide-ref-wrap',
 		'ref_list_class' => 'wonka-slide-ref-list',
