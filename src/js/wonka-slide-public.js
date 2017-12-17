@@ -49,7 +49,7 @@ first_el;
 			setTimeout(function(){
 				cur_el.style.right = '105%'
 				if ( cur_ind != null ) {
-					cur_ind.classList.remove('active-ref');
+					cur_ind.classList.remove('active-indicators');
 				}
 					setTimeout(function(){
 						cur_el.classList.remove('left-slide-out'); 
@@ -58,7 +58,7 @@ first_el;
 						setTimeout(function(){
 							x_el.style.left = '0%'; 
 							if ( x_ind != null ) {
-								x_ind.classList.add('active-ref');
+								x_ind.classList.add('active-indicators');
 							}
 							setTimeout(function(){
 								x_el.classList.remove('right-slide-in'); 
@@ -79,7 +79,13 @@ first_el;
 	}
 
 	function set_controls() {
-		
+		controls = document.getElementsByClassName('slide-control');
+		// controls[0].addEventListener( 'click', function() {
+
+		// };
+		// controls[1].addEventListener( 'click', function() {
+
+		// };
 	}
 
 

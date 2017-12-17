@@ -17,14 +17,16 @@ $transition-1: all .1s ease-in-out;
 
 /* ADMIN MENU ICON */
 #toplevel_page_wonka-slide-admin-display {
-	div.wp-menu-image{
-		position: relative;
-		&:before {
-			content: "";
-			display: inline-block;
-			background: url('../img/ws-slide-logo.svg');
-			background-repeat: no-repeat;
-			background-position: center;
-		}
+	div.wp-menu-image.dashicons-before {
+		
+	}
+}
+
+/* SETTINGS PAGE CONTENT */
+#ws-slide-logo-wrap {
+	width: 150px;
+	height: 150px;
+	img {
+		width: 100%;
 	}
 }
