@@ -17,9 +17,9 @@ function wonka_slide_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'id' => 'wonka-slider-main',
 		'slide_indicators' => true,
-		'ref_wrap_class' => 'wonka-slide-ref-wrap',
-		'ref_list_class' => 'wonka-slide-ref-list',
-		'ref_item_class' => 'wonka-slide-ref-item',
+		'indicators_wrap_class' => 'wonka-slide-indicators-wrap',
+		'indicators_list_class' => 'wonka-slide-indicators-list',
+		'indicators_item_class' => 'wonka-slide-indicators-item',
 		'slide_count' => '3',
 		'container_class' => 'wonka-slider-container',
 		'list_class' => 'wonka-slide-list',
@@ -35,13 +35,13 @@ function wonka_slide_shortcode( $atts ) {
 		$posts_array = get_posts();
 		$output .= '<div id="' . $atts['id'] . '" class="' . $atts['container_class'] . '">';
 		if ( (bool)$atts['slide_indicators'] ) :
-			$output .= '<div class="' . $atts['ref_wrap_class'] . '">';
-			$output .= '<ul class="' . $atts['ref_list_class'] . '">';
+			$output .= '<div class="' . $atts['indicators_wrap_class'] . '">';
+			$output .= '<ul class="' . $atts['indicators_list_class'] . '">';
 			$i = 0;
 			foreach ( $posts_array as $current ) :
 				$i++;
-				$active = ( $i == 1 ) ? ' active-ref': '';
-				$output .= '<li id="slide-indicator-' . $i . '" class="' . $atts['ref_item_class'] . $active . '">';
+				$active = ( $i == 1 ) ? ' active-indicators': '';
+				$output .= '<li id="slide-indicator-' . $i . '" class="' . $atts['indicators_item_class'] . $active . '">';
 				$output .= '<div class="background-img" style="background: url(' . get_the_post_thumbnail_url( $current->ID ) . '); background-size: cover; background-position: top center;"></div>';
 				$output .= '</li>';
 			if ( $atts['slide_count'] == $i ) {

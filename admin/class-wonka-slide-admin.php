@@ -108,7 +108,7 @@ class Wonka_Slide_Admin {
 			'manage_options',
 			'wonka-slide-admin-display',
 			array( $this,'wonka_slide_show_settings_page' ),
-			'none',
+			plugins_url( "/img/ws-slide-logo.svg", __FILE__ ),
 			100
 			);
 	}
