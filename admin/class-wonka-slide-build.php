@@ -16,7 +16,7 @@ function wonka_slide_shortcode( $atts ) {
 	$output = '';
 	$atts = shortcode_atts( array(
 		'id' => 'wonka-slider-main',
-		'slide_ref' => true,
+		'slide_indicators' => true,
 		'ref_wrap_class' => 'wonka-slide-ref-wrap',
 		'ref_list_class' => 'wonka-slide-ref-list',
 		'ref_item_class' => 'wonka-slide-ref-item',
@@ -27,56 +27,48 @@ function wonka_slide_shortcode( $atts ) {
 		'img_class' => 'wonka-slide-img',
 	), $atts);
 
+	$atts['slide_indicators'] = ( $atts['slide_indicators'] === 'false' ) ? false: true; 
 	$img_args = array(
 		'class' => $atts['img_class'],
 	);
 		
+		$posts_array = get_posts();
+		$output .= '<div id="' . $atts['id'] . '" class="' . $atts['container_class'] . '">';
+		if ( (bool)$atts['slide_indicators'] ) :
+			$output .= '<div class="' . $atts['ref_wrap_class'] . '">';
+			$output .= '<ul class="' . $atts['ref_list_class'] . '">';
+			$i = 0;
+			foreach ( $posts_array as $current ) :
+				$i++;
+				$active = ( $i == 1 ) ? ' active-ref': '';
+				$output .= '<li id="slide-indicator-' . $i . '" class="' . $atts['ref_item_class'] . $active . '">';
+				$output .= '<div class="background-img" style="background: url(' . get_the_post_thumbnail_url( $current->ID ) . '); background-size: cover; background-position: top center;"></div>';
+				$output .= '</li>';
+			if ( $atts['slide_count'] == $i ) {
+				break;
+			} 
+			endforeach;
+			$output .= '</ul></div>';
+		endif;
+		$output .= '<div class="list-wrap">';
+		$output .= '<ul class="' . $atts['list_class'] . '">';
+		$i = 0;
+		foreach ( $posts_array as $current ) :
+			$i++;
+			$active = ( $i == 1 ) ? ' active': '';
+			$output .= '<li class="' . $atts['item_class'] . $active . '">';
+			$output .= get_the_post_thumbnail( $current->ID, '', $img_args );
+			$output .= '</li>'; 
+		if ( $atts['slide_count'] == $i ) {
+			break;
+		} 
+		endforeach;
+		$output .= '</ul></div>';
+		$output .= '<a role="button" data-direction="prev" class="slide-control slide-control-left"></a>';
+		$output .= '<a role="button" data-direction="next" class="slide-control slide-control-right"></a>';
+		$output .= '</div>';
 		ob_start();
-			$posts_array = get_posts();
-		?>
-		<div id="<?php echo $atts['id']; ?>" class="<?php echo $atts['container_class']; ?>">
-			<?php if ($atts['slide_ref']) { ?>
-				<div class="<?php echo $atts['ref_wrap_class']; ?>">
-					<ul class="<?php echo $atts['ref_list_class']; ?>">
-						<?php	
-						$i = 0;
-						foreach ( $posts_array as $current ) : 
-							$i++;
-							?>
-							<li id="slide-indicator-<?php echo $i; ?>" class="<?php echo $atts['ref_item_class']; $active = ( $i == 1 ) ? ' active-ref': ''; echo $active; ?>">
-								<div class="background-img" style="background: url(<?php echo get_the_post_thumbnail_url( $current->ID ); ?>); background-size: cover; background-position: top center">
-								</div>
-							</li>
-						<?php 
-						if ( $atts['slide_count'] == $i ) {
-							break;
-						} 
-						endforeach; ?>
-					</ul>
-				</div>
-			<?php } ?>
-			<div class="list-wrap">
-				<ul class="<?php echo $atts['list_class']; ?>">
-					<?php	
-					$i = 0;
-					foreach ( $posts_array as $current ) : 
-						$i++;
-						?>
-						<li class="<?php echo $atts['item_class']; $active = ( $i == 1 ) ? ' active': ''; echo $active; ?>">
-							<?php echo get_the_post_thumbnail( $current->ID, '', $img_args ); ?>
-						</li>
-					<?php 
-					if ( $atts['slide_count'] == $i ) {
-						break;
-					} 
-					endforeach; ?>
-				</ul>
-			</div>
-			<a role="button" data-direction="prev" class="slide-control slide-control-left"></a>
-			<a role="button" data-direction="next" class="slide-control slide-control-right"></a>
-		</div>
 
-		<?php
 		$output .= ob_get_clean();
 
 		return $output;

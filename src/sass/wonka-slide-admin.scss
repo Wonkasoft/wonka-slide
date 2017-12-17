@@ -1,0 +1,30 @@
+/**
+ *  SASS FILE FOR ADMIN CSS
+ */
+/* MIXINS */
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+ 
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+/* TRANSITIONS */
+$transition-15: all .15s ease-in-out;
+$transition-1: all .1s ease-in-out;
+
+/* ADMIN MENU ICON */
+#toplevel_page_wonka-slide-admin-display {
+	div.wp-menu-image{
+		position: relative;
+		&:before {
+			content: "";
+			display: inline-block;
+			background: url('../img/ws-slide-logo.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+}
