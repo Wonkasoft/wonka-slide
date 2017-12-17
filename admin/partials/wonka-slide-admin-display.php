@@ -22,7 +22,7 @@
 	</div> <!-- /page-header -->
 	<div class="content-area">
 		<p>Documentation for Wonka Slide</p>
-		<h2>Shortcode Information - How to use Wonka Slide</h2>
+		<h2>Shortcode Information - Instructions on how to use the Wonka Slide plugin</h2>
 		<strong><p>Default Shortcode</p></strong>
 		<code>[wonka-slider]</code>
 		<p>Default option has all options enabled</p>

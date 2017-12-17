@@ -17,6 +17,7 @@ function wonka_slide_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'id' => 'wonka-slider-main',
 		'slide_indicators' => true,
+		'slide_arrows' => true,
 		'indicators_wrap_class' => 'wonka-slide-indicators-wrap',
 		'indicators_list_class' => 'wonka-slide-indicators-list',
 		'indicators_item_class' => 'wonka-slide-indicators-item',
