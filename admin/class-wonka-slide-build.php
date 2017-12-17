@@ -27,6 +27,7 @@ function wonka_slide_shortcode( $atts ) {
 		'img_class' => 'wonka-slide-img',
 	), $atts);
 
+	strtolower( $atts['slide_indicators'] );
 	$atts['slide_indicators'] = ( $atts['slide_indicators'] === 'false' ) ? false: true; 
 	$img_args = array(
 		'class' => $atts['img_class'],
