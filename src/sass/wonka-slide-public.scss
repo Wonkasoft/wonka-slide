@@ -23,7 +23,7 @@ div#wonka-slider-main {
 	overflow: hidden;
 	@include prefix( transition, $transition-15, webkit moz o );
 	/* SLIDER REFERENCE LIST */
-	div.wonka-slide-ref-wrap {
+	div.wonka-slide-indicators-wrap {
 		position: absolute;
 		text-align: center;
 		display: block;
@@ -31,13 +31,13 @@ div#wonka-slider-main {
 		width: 100%;
 		bottom: 5px;
 		z-index: 500;
-		ul.wonka-slide-ref-list {
+		ul.wonka-slide-indicators-list {
 			position: relative;
 			list-style: none;
 			padding: 0;
 			margin: 0;
 			height: 100%;
-			li.wonka-slide-ref-item {
+			li.wonka-slide-indicators-item {
 				position: relative;
 				display: inline-block;
 				width: 35px;
@@ -56,7 +56,7 @@ div#wonka-slider-main {
 					@include prefix( transform, translateY(-50%), webkit moz o );
 					@include prefix( transition, $transition-1, webkit moz o );
 				}
-				&.active-ref {
+				&.active-indicators {
 					div.background-img{
 						width: 35px;
 						height: 35px;

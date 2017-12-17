@@ -2,5 +2,6 @@
 /* MIXINS */
 /* TRANSITIONS */
 /* ADMIN MENU ICON */
-#toplevel_page_wonka-slide-admin-display div.wp-menu-image { position: relative; }
-#toplevel_page_wonka-slide-admin-display div.wp-menu-image:before { content: ""; display: inline-block; background: url("../img/ws-slide-logo.svg"); background-repeat: no-repeat; background-position: center; }
+/* SETTINGS PAGE CONTENT */
+#ws-slide-logo-wrap { width: 150px; height: 150px; }
+#ws-slide-logo-wrap img { width: 100%; }
