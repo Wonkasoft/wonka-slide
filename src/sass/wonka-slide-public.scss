@@ -79,33 +79,40 @@ div#wonka-slider-main {
     padding: 0;
     margin: 0;
 		@include prefix( transition, $transition-1, webkit moz o );
-    li.wonka-slider-item {
-    	position: relative;
-    	display: none;
-    	float: left;
-			@include prefix( transition, $transition-1, webkit moz o );
-	    &.active {
-	    	display: inline-block;
-	    }
-	    &.left-slide-in {
-	    	display: inline-block;
-	    	right: 105%;
+    li {
+	    &.wonka-slider-item {
+	    	position: relative;
+	    	display: none;
+	    	float: left;
+    		width: 100%;
 				@include prefix( transition, $transition-1, webkit moz o );
-	    }
-	    &.right-slide-in {
-	    	display: inline-block;
-	    	left: 105%;
-				@include prefix( transition, $transition-1, webkit moz o );
-	    }
-	    &.left-slide-out {
-	    	display: inline-block;
-	    	right: 0;
-				@include prefix( transition, $transition-1, webkit moz o );
-	    }
-	    &.right-slide-out {
-	    	display: inline-block;
-	    	left: 0;
-				@include prefix( transition, $transition-1, webkit moz o );
+		    &.active {
+		    	display: inline-block;
+		    }
+		    &.left-slide-in {
+		    	display: inline-block;
+		    	right: 105%;
+					@include prefix( transition, $transition-1, webkit moz o );
+		    }
+		    &.right-slide-in {
+		    	display: inline-block;
+		    	left: 105%;
+					@include prefix( transition, $transition-1, webkit moz o );
+		    }
+		    &.left-slide-out {
+		    	display: inline-block;
+		    	right: 0;
+					@include prefix( transition, $transition-1, webkit moz o );
+		    }
+		    &.right-slide-out {
+		    	display: inline-block;
+		    	left: 0;
+					@include prefix( transition, $transition-1, webkit moz o );
+		    }
+		    img.wonka-slide-img {
+	    		width: 100%;
+	    		height: auto;
+	    	}
 	    }
     }
 	}

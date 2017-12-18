@@ -32,9 +32,6 @@ function wonka_slide_shortcode( $atts ) {
 	$atts['slide_arrows'] = ( $atts['slide_arrows'] === 'false' ) ? false: true;
 	strtolower( $atts['slide_indicators'] );
 	$atts['slide_indicators'] = ( $atts['slide_indicators'] === 'false' ) ? false: true; 
-	$img_args = array(
-		'class' => $atts['img_class'],
-	);
 		
 		$posts_array = get_posts();
 		$output .= '<div id="' . $atts['id'] . '" class="' . $atts['container_class'] . '">';
@@ -60,8 +57,8 @@ function wonka_slide_shortcode( $atts ) {
 		foreach ( $posts_array as $current ) :
 			$i++;
 			$active = ( $i == 1 ) ? ' active': '';
-			$output .= '<li class="' . $atts['item_class'] . $active . '">';
-			$output .= get_the_post_thumbnail( $current->ID, '', $img_args );
+			$output .= '<li id="slide-' . $i . '" class="' . $atts['item_class'] . $active . '">';
+			$output .= '<img src="' . get_the_post_thumbnail_url( $current->ID ) . '" class="' . $atts['img_class'] . '" />';
 			$output .= '</li>'; 
 		if ( $atts['slide_count'] == $i ) {
 			break;
