@@ -24,6 +24,7 @@ add_filter( 'plugin_action_links_'. $base, 'wonka_slide_add_settings_link_filter
 
 function wonka_slide_add_settings_link_filter( $links ) { 
  $donate_link = '<a href="https://paypal.me/Wonkasoft" target="blank">Donate</a>';
- array_unshift( $links, $donate_link ); 
+ $settings_link = '<a href="admin.php?page=wonka-slide-admin-display" target="_self">Settings</a>';
+ array_unshift( $links, $settings_link, $donate_link ); 
  return $links; 
 }
