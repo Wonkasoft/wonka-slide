@@ -1,57 +1,42 @@
 ( function() {
 'use strict'
 
-var slider,
-controls,
-indicators,
-imgs,
-resize_time,
-slide_time,
-current_indicator,
-prev_indicator,
-next_indicator,
-selected_indicator,
-first_indicator,
-last_indicator,
-el,
-prev_el,
-next_el,
-selected_el,
-first_el,
-last_el;
+	var slider, controls, indicators, imgs,
+	resize_time, slide_time, current_indicator,
+	prev_indicator, next_indicator, selected_indicator,
+	first_indicator, last_indicator, el, prev_el,
+	next_el, selected_el, first_el, last_el;
 
 	
 	window.onload = function () {
 		if ( document.getElementById( 'wonka-slider-main' ) ) {
 			slider = document.getElementById( 'wonka-slider-main' );
 			set_wonka_slide_height();
-			start_interval();
-			if ( document.getElementsByClassName( 'slide-control' ).length ) {
-				set_controls();
-			}
-			if ( document.getElementsByClassName( 'wonka-slide-indicators-item' ).length ) {
-				set_indicators();
-			}
+			start_interval(4000);
+			if ( document.getElementsByClassName( 'slide-control' ).length ) { set_controls(); }
+			if ( document.getElementsByClassName( 'wonka-slide-indicators-item' ).length ) { set_indicators(); }
+			slider.onmouseover = function () { clearInterval(slide_time); };
+			slider.onmouseleave = function () { start_interval(2000); };
 		}
 	};
-
+		
 	window.onresize = function () {
 		if ( document.getElementById( 'wonka-slider-main' ) ) {
 			clearTimeout( resize_time );
 			resize_time = setTimeout( function () { set_wonka_slide_height(); }, 2000 );
 		}
 	}
-	
+
+
+	// This is for the slide setup
 	function slide_interval(direction) {
 		clearInterval( slide_time );
-		console.log(direction);
 		direction = (( direction ) ? direction: 'next');
-		console.log(direction);
+		selected_indicator = document.getElementById('slide-indicator-' + direction );
+		selected_el = document.getElementById('slide-' + direction );
 		var slider_items = document.getElementsByClassName( 'wonka-slider-item' );
 		for (var i = 0; i < slider_items.length; i++) {
-				var n = i + 1;
-				var p = i - 1;
-				var last = slider_items.length - 1;
+				var n = i + 1, p = i - 1, last = slider_items.length - 1;
 				current_indicator = document.getElementById( 'slide-indicator-' + n );
 				prev_indicator = document.getElementById( 'slide-indicator-' + (n - 1) );
 				next_indicator = document.getElementById( 'slide-indicator-' + (n + 1) );
@@ -76,9 +61,19 @@ last_el;
 				wonka_queue( el, prev_el, current_indicator, prev_indicator, direction, 150 );
 				break;
 			}
+			if ( el.classList.contains( 'active' ) && !isNaN( direction ) && el.getAttribute( 'data-slide' ) < direction ) {
+				direction = 'next';
+				wonka_queue( el, selected_el, current_indicator, selected_indicator, direction, 150 );
+				break;
+			} else if ( el.classList.contains( 'active' ) && !isNaN( direction ) && el.getAttribute( 'data-slide' ) > direction ) {
+				direction = 'prev';
+				wonka_queue( el, selected_el, current_indicator, selected_indicator, direction, 150 );
+				break;
+			}
 		}
 	}
 
+	// Slide action
 	function wonka_queue( cur_el, x_el, cur_ind, x_ind, direction, time ) {
 		var moving = (( direction === 'next' ) ? 'left': 'right');
 		var from = (( direction === 'next' ) ? 'right': 'left');
@@ -91,31 +86,15 @@ last_el;
 				cur_el.style.left = '0%';
 			}
 			setTimeout( function(){
-				if ( from === 'right' ) {
-					cur_el.style.right = '105%';
-				} else {
-					cur_el.style.left = '105%';
-				}
-				if ( cur_ind != null ) {
-					cur_ind.classList.remove( 'active-indicators' );
-				}
+				if ( from === 'right' ) { cur_el.style.right = '105%'; } else { cur_el.style.left = '105%'; }
+				if ( cur_ind != null ) { cur_ind.classList.remove( 'active-indicators' ); }
 					setTimeout(function(){
 						cur_el.classList.remove( moving + '-slide-out' ); 
 						x_el.classList.add( from + '-slide-in' );
-						if ( moving === 'left' ) {
-							x_el.style.left = '105%';
-						} else {
-							x_el.style.right = '105%';
-						}
+						if ( moving === 'left' ) { x_el.style.left = '105%'; } else { x_el.style.right = '105%'; }
 						setTimeout(function(){
-							if ( moving === 'left' ) {
-								x_el.style.left = '0%';
-							} else {
-								x_el.style.right = '0%';
-							}
-							if ( x_ind != null ) {
-								x_ind.classList.add( 'active-indicators' );
-							}
+							if ( moving === 'left' ) { x_el.style.left = '0%'; } else { x_el.style.right = '0%'; }
+							if ( x_ind != null ) { x_ind.classList.add( 'active-indicators' ); }
 							setTimeout( function(){
 								x_el.classList.remove( from + '-slide-in' ); 
 								x_el.classList.add( 'active' ); 
@@ -124,7 +103,7 @@ last_el;
 									x_el.removeAttribute( 'style' );
 									setTimeout( function(){
 										clearInterval( slide_time );
-										start_interval();
+										start_interval(4000);
 									}, time);
 								}, time);
 							}, time);	
@@ -135,8 +114,8 @@ last_el;
 
 	}
 
-	function start_interval() {
-		slide_time = setInterval( slide_interval, 4000 );
+	function start_interval(time) {
+		slide_time = setInterval( slide_interval, time );
 	}
 
 	function set_controls() {

@@ -124,55 +124,55 @@ div#wonka-slider-main {
 		    }
 	    }
 		}
-		a.slide-control {
-			position: absolute;
-			display: inline-block;
-			width: 8%;
-			height: 100%;
-			top: 50%;
-			font-size: 38px;
-			border: none;
-			background: #000;
-			opacity: 0.2;
-			@include prefix( transition, $transition-15, webkit moz o );
-			@include prefix( transform, translateY(-50%), webkit moz o );
-			&.slide-control-left {
-				left: 0;
-				background: -webkit-linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
-				background: -moz-linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
-				background: linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
-				&:after {
-					content: "\276E";
-					position: absolute;
-					display: inline-block;
-					top: 50%;
-					left: 50%;
-					@include prefix( transform, translate(-50%, -50%), webkit moz o );
-				}
-			}
-			&.slide-control-right {
-				right: 0;
-				background: -webkit-linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
-				background: -moz-linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
-				background: linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
-				&:after {
-					content: "\276F";
-					position: absolute;
-					display: inline-block;
-					top: 50%;
-					left: 50%;
-					@include prefix( transform, translate(-50%, -50%), webkit moz o );
-				}
-			}
+	}
+	a.slide-control {
+		position: absolute;
+		display: inline-block;
+		width: 8%;
+		height: 100%;
+		top: 50%;
+		font-size: 38px;
+		border: none;
+		background: #000;
+		opacity: 0.2;
+		@include prefix( transition, $transition-15, webkit moz o );
+		@include prefix( transform, translateY(-50%), webkit moz o );
+		&.slide-control-left {
+			left: 0;
+			background: -webkit-linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
+			background: -moz-linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
+			background: linear-gradient(-90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
 			&:after {
-				color: #fff;
-				@include prefix( transition, $transition-15, webkit moz o );
+				content: "\276E";
+				position: absolute;
+				display: inline-block;
+				top: 50%;
+				left: 50%;
+				@include prefix( transform, translate(-50%, -50%), webkit moz o );
 			}
-			&:hover {
-				opacity: 1;
-				&:after {
-					color: #1dcffc;
-				}
+		}
+		&.slide-control-right {
+			right: 0;
+			background: -webkit-linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
+			background: -moz-linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
+			background: linear-gradient(90deg, rgba(#000,0) 0%, rgba(#000,0.4) 100%);
+			&:after {
+				content: "\276F";
+				position: absolute;
+				display: inline-block;
+				top: 50%;
+				left: 50%;
+				@include prefix( transform, translate(-50%, -50%), webkit moz o );
+			}
+		}
+		&:after {
+			color: #fff;
+			@include prefix( transition, $transition-15, webkit moz o );
+		}
+		&:hover {
+			opacity: 1;
+			&:after {
+				color: #1dcffc;
 			}
 		}
 	}
