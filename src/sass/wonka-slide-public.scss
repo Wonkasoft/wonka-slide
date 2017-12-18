@@ -55,18 +55,49 @@ div#wonka-slider-main {
 					border: 2px solid #fff;
 					@include prefix( transform, translateY(-50%), webkit moz o );
 					@include prefix( transition, $transition-1, webkit moz o );
-				}
-				&.active-indicators {
-					div.background-img{
-						width: 35px;
-						height: 35px;
-						border: 2px solid #1dcffc;
+					a.slide-post-title {
+						position: relative;
+						display: none;
+						padding: 0px 17px;
+						float: left;
+						top: -100%;
+						left: 50%;
+						color: #fff;
+						white-space: nowrap;
+						background: rgba(0,0,0,0.5);
+						@include prefix( transform, translate(-50%, -50%), webkit moz o );
+						@include prefix( transition, $transition-1, webkit moz o );
 					}
 				}
 				&:hover {
-					div.background-img{
+					div.background-img {
 						width: 35px;
 						height: 35px;
+						a.slide-post-title {
+							display: inline-block;
+							top: -85%;
+							font-size: 26px;
+							line-height: 1.2;
+						}
+					}
+					&.active-indicator {
+						div.background-img {
+							a.slide-post-title {
+								top: -180%;
+							}
+						}
+					}
+				}
+				&.active-indicator {
+					div.background-img {
+						width: 35px;
+						height: 35px;
+						border: 2px solid #1dcffc;
+						a.slide-post-title {
+							display: inline-block;
+							font-size: 46px;
+							line-height: 1.2;
+						}
 					}
 				}
 			}

@@ -28,12 +28,13 @@ function wonka_slide_shortcode( $atts ) {
 		'img_class' => 'wonka-slide-img',
 	), $atts);
 
+	$posts_array = get_posts();
 	strtolower( $atts['slide_arrows'] );
 	$atts['slide_arrows'] = ( $atts['slide_arrows'] === 'false' ) ? false: true;
 	strtolower( $atts['slide_indicators'] );
-	$atts['slide_indicators'] = ( $atts['slide_indicators'] === 'false' ) ? false: true; 
-		
-		$posts_array = get_posts();
+	$atts['slide_indicators'] = ( $atts['slide_indicators'] === 'false' ) ? false: true;
+	if ( $atts['slide_count'] > 10 ) { $atts['slide_count'] = 10; }
+	if ( $atts['slide_count'] > sizeof( $posts_array ) ) { $atts['slide_count'] = sizeof( $posts_array ); }
 		$output .= '<div id="' . $atts['id'] . '" class="' . $atts['container_class'] . '">';
 		if ( (bool)$atts['slide_indicators'] ) :
 			$output .= '<div class="' . $atts['indicators_wrap_class'] . '">';
@@ -41,10 +42,10 @@ function wonka_slide_shortcode( $atts ) {
 			$i = 0;
 			foreach ( $posts_array as $current ) :
 				$i++;
-				$active = ( $i == 1 ) ? ' active-indicators': '';
+				$active = ( $i == 1 ) ? ' active-indicator': '';
 				$output .= '<li id="slide-indicator-' . $i . '" data-slide-indicator="' . $i . '" class="' . $atts['indicators_item_class'] . $active . '">';
-				$output .= '<div class="background-img" style="background: url(' . get_the_post_thumbnail_url( $current->ID ) . '); background-size: cover; background-position: top center;"></div>';
-				$output .= '</li>';
+				$output .= '<div class="background-img" style="background: url(' . get_the_post_thumbnail_url( $current->ID ) . '); background-size: cover; background-position: top center;"><a href="' . get_post_permalink( $current->ID ) . '" class="slide-post-title">' . get_the_title( $current->ID ) . '</a>';
+				$output .= '</div></li>';
 			if ( $atts['slide_count'] == $i ) {
 				break;
 			} 

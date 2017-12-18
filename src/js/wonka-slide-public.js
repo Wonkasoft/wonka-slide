@@ -87,14 +87,14 @@
 			}
 			setTimeout( function(){
 				if ( from === 'right' ) { cur_el.style.right = '105%'; } else { cur_el.style.left = '105%'; }
-				if ( cur_ind != null ) { cur_ind.classList.remove( 'active-indicators' ); }
+				if ( cur_ind != null ) { cur_ind.classList.remove( 'active-indicator' ); }
 					setTimeout(function(){
 						cur_el.classList.remove( moving + '-slide-out' ); 
 						x_el.classList.add( from + '-slide-in' );
 						if ( moving === 'left' ) { x_el.style.left = '105%'; } else { x_el.style.right = '105%'; }
 						setTimeout(function(){
 							if ( moving === 'left' ) { x_el.style.left = '0%'; } else { x_el.style.right = '0%'; }
-							if ( x_ind != null ) { x_ind.classList.add( 'active-indicators' ); }
+							if ( x_ind != null ) { x_ind.classList.add( 'active-indicator' ); }
 							setTimeout( function(){
 								x_el.classList.remove( from + '-slide-in' ); 
 								x_el.classList.add( 'active' ); 
@@ -115,6 +115,7 @@
 	}
 
 	function start_interval(time) {
+		clearInterval( slide_time );
 		slide_time = setInterval( slide_interval, time );
 	}
 
