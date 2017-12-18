@@ -42,7 +42,7 @@ function wonka_slide_shortcode( $atts ) {
 			foreach ( $posts_array as $current ) :
 				$i++;
 				$active = ( $i == 1 ) ? ' active-indicators': '';
-				$output .= '<li id="slide-indicator-' . $i . '" class="' . $atts['indicators_item_class'] . $active . '">';
+				$output .= '<li id="slide-indicator-' . $i . '" data-slide-indicator="' . $i . '" class="' . $atts['indicators_item_class'] . $active . '">';
 				$output .= '<div class="background-img" style="background: url(' . get_the_post_thumbnail_url( $current->ID ) . '); background-size: cover; background-position: top center;"></div>';
 				$output .= '</li>';
 			if ( $atts['slide_count'] == $i ) {
@@ -57,7 +57,7 @@ function wonka_slide_shortcode( $atts ) {
 		foreach ( $posts_array as $current ) :
 			$i++;
 			$active = ( $i == 1 ) ? ' active': '';
-			$output .= '<li id="slide-' . $i . '" class="' . $atts['item_class'] . $active . '">';
+			$output .= '<li id="slide-' . $i . '" data-slide="' . $i . '" class="' . $atts['item_class'] . $active . '">';
 			$output .= '<img src="' . get_the_post_thumbnail_url( $current->ID ) . '" class="' . $atts['img_class'] . '" />';
 			$output .= '</li>'; 
 		if ( $atts['slide_count'] == $i ) {
