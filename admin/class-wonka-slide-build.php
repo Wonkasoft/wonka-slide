@@ -28,10 +28,10 @@ function wonka_slide_shortcode( $atts ) {
 		'img_class' => 'wonka-slide-img',
 	), $atts);
 
+	strtolower( $atts['slide_arrows'] );
+	$atts['slide_arrows'] = ( $atts['slide_arrows'] === 'false' ) ? false: true;
+	strtolower( $atts['slide_indicators'] );
 	$atts['slide_indicators'] = ( $atts['slide_indicators'] === 'false' ) ? false: true; 
-	$img_args = array(
-		'class' => $atts['img_class'],
-	);
 		
 		$posts_array = get_posts();
 		$output .= '<div id="' . $atts['id'] . '" class="' . $atts['container_class'] . '">';
@@ -42,7 +42,7 @@ function wonka_slide_shortcode( $atts ) {
 			foreach ( $posts_array as $current ) :
 				$i++;
 				$active = ( $i == 1 ) ? ' active-indicators': '';
-				$output .= '<li id="slide-indicator-' . $i . '" class="' . $atts['indicators_item_class'] . $active . '">';
+				$output .= '<li id="slide-indicator-' . $i . '" data-slide-indicator="' . $i . '" class="' . $atts['indicators_item_class'] . $active . '">';
 				$output .= '<div class="background-img" style="background: url(' . get_the_post_thumbnail_url( $current->ID ) . '); background-size: cover; background-position: top center;"></div>';
 				$output .= '</li>';
 			if ( $atts['slide_count'] == $i ) {
@@ -57,16 +57,18 @@ function wonka_slide_shortcode( $atts ) {
 		foreach ( $posts_array as $current ) :
 			$i++;
 			$active = ( $i == 1 ) ? ' active': '';
-			$output .= '<li class="' . $atts['item_class'] . $active . '">';
-			$output .= get_the_post_thumbnail( $current->ID, '', $img_args );
+			$output .= '<li id="slide-' . $i . '" data-slide="' . $i . '" class="' . $atts['item_class'] . $active . '">';
+			$output .= '<img src="' . get_the_post_thumbnail_url( $current->ID ) . '" class="' . $atts['img_class'] . '" />';
 			$output .= '</li>'; 
 		if ( $atts['slide_count'] == $i ) {
 			break;
 		} 
 		endforeach;
 		$output .= '</ul></div>';
-		$output .= '<a role="button" data-direction="prev" class="slide-control slide-control-left"></a>';
-		$output .= '<a role="button" data-direction="next" class="slide-control slide-control-right"></a>';
+		if ( (bool)$atts['slide_arrows'] ) :
+			$output .= '<a role="button" data-direction="prev" class="slide-control slide-control-left"></a>';
+			$output .= '<a role="button" data-direction="next" class="slide-control slide-control-right"></a>';
+		endif;
 		$output .= '</div>';
 		ob_start();
 
