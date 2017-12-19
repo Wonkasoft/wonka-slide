@@ -18,7 +18,10 @@ $transition-1: all .1s ease-in-out;
 /* ADMIN MENU ICON */
 #toplevel_page_wonka-slide-admin-display {
 	div.wp-menu-image.dashicons-before {
-		
+		img {
+			width: 24px;
+			padding-top: 5px;
+		}
 	}
 }
 
