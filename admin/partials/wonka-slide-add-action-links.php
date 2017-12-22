@@ -19,12 +19,24 @@
 * @subpackage wonka-slide/admin/partials
 * @author     Wonkasoft <info@wonkasoft.com>
 */
-$base =  'wonka-slide/wonka-slide.php';
-add_filter( 'plugin_action_links_'. $base, 'wonka_slide_add_settings_link_filter' , 10, 1);
+
+add_filter( 'plugin_action_links_'. WONKA_SLIDE_BASENAME, 'wonka_slide_add_settings_link_filter' , 10, 1);
 
 function wonka_slide_add_settings_link_filter( $links ) { 
- $donate_link = '<a href="https://paypal.me/Wonkasoft" target="blank">Donate</a>';
- $settings_link = '<a href="admin.php?page=wonka-slide-admin-display" target="_self">Settings</a>';
- array_unshift( $links, $settings_link, $donate_link ); 
+	$links_addon = '<a href="admin.php?page=wonka-slide-admin-display" target="_self">Settings</a>';
+	array_unshift($links, $links_addon);
+	$links[] = '<a href="https://paypal.me/Wonkasoft" target="blank"><img src="' . plugin_dir_url( "wonka-slide" ) . "wonka-slide/admin/img/ws-slide-logo.svg" . '" style="width: 20px; height: 20px; display: inline-block;
+    vertical-align: text-top; float: none;" /></a>';
+ return $links; 
+}
+
+add_filter( 'plugin_row_meta', 'wonka_slide_add_description_link_filter', 10, 2);
+
+function wonka_slide_add_description_link_filter( $links, $file ) {
+	if ( strpos($file, 'wonka-slide.php') !== false ) {
+		$links[] = '<a href="admin.php?page=wonka-slide-admin-display" target="_self">Settings</a>';
+		$links[] = '<a href="https://paypal.me/Wonkasoft" target="blank">Donate <img src="' . plugin_dir_url( "wonka-slide" ) . "wonka-slide/admin/img/ws-slide-logo.svg" . '" style="width: 20px; height: 20px; display: inline-block;
+    vertical-align: text-top;" /></a>';
+	}
  return $links; 
 }

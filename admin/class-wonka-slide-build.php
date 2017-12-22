@@ -69,7 +69,7 @@ function wonka_slide_shortcode( $atts ) {
 			// Building slide titles
 			$output .= '<div id="wonka-slide-title-wrap" class="' . $atts['container_class'] . '">';
 			$output .= '<a href="' . get_post_permalink( $current->ID ) . '" class="slide-post-title">' . get_the_title( $current->ID ) . '</a></div>';
-			$output .= '<img src="' . get_the_post_thumbnail_url( $current->ID ) . '" class="' . $atts['img_class'] . '" />';
+			$output .= '<a href="' . get_post_permalink( $current->ID ) . '" class="slide-post-title"><img src="' . get_the_post_thumbnail_url( $current->ID ) . '" class="' . $atts['img_class'] . '" /></a>';
 			$output .= '<div class="wonka-slide-excerpt-wrap">' . get_the_excerpt( $current->ID ) . '</div>';
 			$output .= '</li>'; 
 		if ( $atts['slide_count'] == $i ) {

@@ -19,6 +19,7 @@
  * Version:           1.0.0
  * Author:            Wonkasoft
  * Author URI:        https://wonkasoft.com
+ * Donations:					https://paypal.me/Wonkasoft
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wonka-slide
@@ -31,11 +32,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Currently pligin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * define constants
+ * 
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'WONKA_SLIDE_PATH', plugin_dir_path(__FILE__) );
+define( 'WONKA_SLIDE_NAME', plugin_basename(dirname(__FILE__)) );
+define( 'WONKA_SLIDE_BASENAME', plugin_basename(__FILE__) );
+define( 'WONKA_SLIDE_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
